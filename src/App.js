@@ -1,10 +1,18 @@
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './page/home/home';
+import GlobalStyle from './styles/GlobalStyle';
 
 function App() {
   return (
     <div className="App">
-      <h2>hello world.</h2>
+      <GlobalStyle/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
