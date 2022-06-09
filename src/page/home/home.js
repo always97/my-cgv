@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
 import Header from '../../component/home/header';
-import MovieCarousel from '../../component/home/movieCarousel';
+import MovieChart from '../../component/home/movieChart';
 import styles from './home.module.css';
 
 const Home = () => {
 
-
-
+    const [playOn,setPlayOn] = useState(false);
+    const [soundOn,setSoundOn] = useState(false);
 
     
     return (
@@ -17,7 +18,15 @@ const Home = () => {
                 <div className={styles.trailler}>
                     <div className={styles.contents}>
                         <div className={styles.videoBox}>
-                            <video src="https://adimg.cgv.co.kr/images/202205/Witch2/220527_Witch2_1080x608.mp4" type="video/mp4"></video>
+                            <ReactPlayer 
+                                className={styles.video}
+                                url='https://adimg.cgv.co.kr/images/202205/Witch2/220527_Witch2_1080x608.mp4' 
+                                playing={playOn}
+                                muted={soundOn}
+                                width={"100%"}
+                                height={"100%"}
+                            /> 
+                            {/* <video src="https://adimg.cgv.co.kr/images/202205/Witch2/220527_Witch2_1080x608.mp4" type="video/mp4"></video> */}
                             <strong className={styles.traillerTitle}>마녀(魔女) Part2. The Other One</strong>
                             <span className={styles.traillerText}>
                                 모든 것의 시작,
@@ -26,13 +35,13 @@ const Home = () => {
                             </span>
                             <div className={styles.traillerControllerBox}>
                                 <Link to="/" className={styles.detailViewLink}>상세보기</Link>
-                                <button className={styles.videoStop}>Stop</button>
-                                <button className={styles.videoSoundOnOff}>Sound On</button>
+                                <button className={playOn ? styles.videoPlay : styles.videoStop} onClick={()=> setPlayOn(!playOn)}>Stop</button>
+                                <button className={soundOn ? styles.videoSoundOn : styles.videoSoundOff} onClick={()=> setSoundOn(!soundOn)} >SoundOnOff</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <MovieCarousel/>
+                <MovieChart/>
             </div>
         </div>
     );

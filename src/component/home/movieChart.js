@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './movieCarousel.module.css';
+import styles from './movieChart.module.css';
 
-const MovieCarousel = () => {
+const MovieChart = () => {
     return (
         <div className={styles.movieChartBox}>
             <div className={styles.contents}>
                 <div className={styles.tabBox}>
                     <div className={styles.tab}>
                         <h3>
-                            <Link to="/" className={styles.active}>무비차트</Link>
+                            <span className={styles.tabTitle}>무비차트</span>
                         </h3>
                     </div>
+                    <Link to="/" className={styles.viewAll}>전체보기</Link>
                 </div>
             </div>
         </div>
     );
 };
 
-export default MovieCarousel;
+export default MovieChart;

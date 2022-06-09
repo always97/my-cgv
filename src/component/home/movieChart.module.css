@@ -32,9 +32,20 @@
     font-weight: 500;
 }
 
-.active {
+.tabTitle {
     font-weight: 700;
     color: #222;
     font-size: 26px;
     line-height: 1.423em;
+}
+
+.viewAll {
+    padding: 4px 32px 4px 15px;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.429em;
+    background: transparent url(../../../public/images/arrowR_8x13.png) calc(100% - 7px) center/8px 13px scroll no-repeat;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 0 rgb(0 0 0 / 5%);
 }
