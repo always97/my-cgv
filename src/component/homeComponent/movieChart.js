@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './movieChart.module.css';
+import MovieChartItem from './movieChartItem';
 
 const MovieChart = () => {
     return (
@@ -12,7 +13,13 @@ const MovieChart = () => {
                             <span className={styles.tabTitle}>무비차트</span>
                         </h3>
                     </div>
-                    <Link to="/" className={styles.viewAll}>전체보기</Link>
+                    <Link to="/movies" className={styles.viewAll}>전체보기</Link>
+                </div>
+                <div className={styles.movieCharBox}>
+                    <div className={styles.swipBox}>
+                        <MovieChartItem/>
+                        <MovieChartItem/>
+                    </div>
                 </div>
             </div>
         </div>

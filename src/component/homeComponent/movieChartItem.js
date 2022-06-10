@@ -13,7 +13,10 @@ const MovieChartItem = (props) => {
                     <img src="https://img.cgv.co.kr/R2014/images/common/flag/age/grade-12.png" alt="12세 이상"/>
                 </div>
             </div>
-            <div className={styles.movieInfo}></div>
+            <div className={styles.movieInfo}>
+                <strong className={styles.movieName}>브로커</strong>
+                <span>예매율 77.7%</span>
+            </div>
 
         </div>
     );

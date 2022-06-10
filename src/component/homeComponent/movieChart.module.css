@@ -49,3 +49,22 @@
     border-radius: 15px;
     box-shadow: 1px 1px 1px 0 rgb(0 0 0 / 5%);
 }
+
+.movieCharBox {
+    overflow: visible;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    z-index: 1;
+}
+
+.movieCharBox .swipBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}

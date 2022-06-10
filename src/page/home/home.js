@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
-import Header from '../../component/home/header';
-import MovieChart from '../../component/home/movieChart';
+import Header from '../../component/homeComponent/header';
+import MovieChart from '../../component/homeComponent/movieChart';
+
 import styles from './home.module.css';
 
 const Home = () => {
 
-    const [playOn,setPlayOn] = useState(false);
-    const [soundOn,setSoundOn] = useState(false);
+    const [playOn,setPlayOn] = useState(true);
+    const [mute,setMute] = useState(true);
 
+    useEffect(()=> {
+    
+    }, [])
     
     return (
         <div>
@@ -22,7 +26,7 @@ const Home = () => {
                                 className={styles.video}
                                 url='https://adimg.cgv.co.kr/images/202205/Witch2/220527_Witch2_1080x608.mp4' 
                                 playing={playOn}
-                                muted={soundOn}
+                                muted={mute}
                                 width={"100%"}
                                 height={"100%"}
                             /> 
@@ -36,7 +40,7 @@ const Home = () => {
                             <div className={styles.traillerControllerBox}>
                                 <Link to="/" className={styles.detailViewLink}>상세보기</Link>
                                 <button className={playOn ? styles.videoPlay : styles.videoStop} onClick={()=> setPlayOn(!playOn)}>Stop</button>
-                                <button className={soundOn ? styles.videoSoundOn : styles.videoSoundOff} onClick={()=> setSoundOn(!soundOn)} >SoundOnOff</button>
+                                <button className={mute ? styles.videoSoundOff : styles.videoSoundOn} onClick={()=> setMute(!mute)} >SoundOnOff</button>
                             </div>
                         </div>
                     </div>

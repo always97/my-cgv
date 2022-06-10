@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './header.module.css';
 
 const Header = () => {
 
-    
 
     return (
         <div className={styles.header}>
@@ -20,15 +19,27 @@ const Header = () => {
                     <ul className={styles.memberInfo}>
                         <li>
                             {/* 로그인 및 회원가입 링크주소 to="/" 설정 */}
-                            <Link to="/" className={styles.link}>
+                            <Link to="/login" className={styles.link}>
                                 <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그인"/>
                                 <span>로그인</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/" className={styles.link}>
+                            <Link to="/login" className={styles.link}>
+                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그아웃"/>
+                                <span>로그아웃</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/join" className={styles.link}>
                                 <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png" alt="회원가입"/>
                                 <span>회원가입</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/mycgv" className={styles.link}>
+                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="회원가입"/>
+                                <span>MY CGV</span>
                             </Link>
                         </li>
                     </ul>
