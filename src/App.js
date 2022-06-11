@@ -10,6 +10,7 @@ import Mycgv from './page/mycgv/mycgv';
 import AllMovies from './page/allMovies/allMovies';
 import Theater from './page/theater/theater';
 import MovieDetail from './page/movieDetail/movieDetail';
+import Reserve from './page/reserve/reserve';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/movies' element={<AllMovies/>} />
           <Route path='/movies/detail/:id' element={<MovieDetail/>} />
           <Route path='/theater' element={<Theater/>} />
+          <Route path='/reserve' element={<Reserve/>} />
         </Routes>
       </BrowserRouter>
     </>

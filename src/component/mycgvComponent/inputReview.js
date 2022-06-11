@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import styled from "styled-components";
 
@@ -8,10 +8,10 @@ const InputReview = () => {
     
     const [point, setPoint] = useState([false, false, false, false, false]);
 
-    const handlePoint = () => {
-        let skillPointStates = [...skillPoint];
+    const handlePoint = (index) => {
+        let pointStates = [...point];
         for (let i = 0; i < 5; i++) {
-        skillPointStates[i] = i <= index ? true : false;
+        pointStates[i] = i <= index ? true : false;
         }
         setPoint(point)
     };

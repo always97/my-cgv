@@ -21,7 +21,7 @@ const MovieChartItem = (props) => {
                 </div>
                 <div className={`${styles.btnBox} ${btnVison ? styles.vision : styles.hide}`}>
                     <Link to="/movies/detail/1"><Button className={styles.btn}>상세보기</Button></Link>
-                    <Link to="/"><Button className={styles.btn}>예매하기</Button></Link>
+                    <Link to="/reserve"><Button className={styles.btn}>예매하기</Button></Link>
                 </div>
             </div>
             <div className={styles.movieInfo}>

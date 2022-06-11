@@ -1,0 +1,13 @@
+
+.timeBox {
+    position: relative;
+    height: 25px;
+    line-height: 25px;
+    padding-bottom: 9px;
+    cursor: pointer;
+}
+.time span {
+    border: 1px solid #5c5c5c;
+    margin: 1px;
+    line-height: 19px;
+}

@@ -8,12 +8,12 @@ const Mycgv = () => {
 
     const [ticketList,setTicketList] = useEffect([]);
 
-    const memberId
+    // const memberId
 
     const getTicketList = async () => {
-        const res = await (await axios.get(`sdf/id=${id}`)).data;
+        // const res = await (await axios.get(`sdf/id=${id}`)).data;
 
-        setTicketList(res.data);
+        // setTicketList(res.data);
     }
 
     useEffect(()=> {
