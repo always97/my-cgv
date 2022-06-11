@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from 'movieItem.module.css';
+import styles from './movieItem.module.css';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 

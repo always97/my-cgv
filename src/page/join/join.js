@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './join.module.css';
-import { Box, FormControlLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@mui/material';
+import { FormControlLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@mui/material';
 import Header from '../../component/homeComponent/header';
-import { Button, FormControl } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const Join = () => {
 
@@ -36,6 +36,7 @@ const Join = () => {
                             <div className={styles.loginInput}>
                                 <TextField
                                     className={styles.inputBox}
+                                    name="id"
                                     value={userInfo.id}
                                     onChange={handleChange}
                                     helperText="Please enter your id"
@@ -44,6 +45,7 @@ const Join = () => {
                                 />
                                 <TextField
                                     className={styles.inputBox}
+                                    name="password"
                                     value={userInfo.password}
                                     onChange={handleChange}
                                     helperText="Please enter your password"
@@ -54,7 +56,7 @@ const Join = () => {
                                 
                                 <RadioGroup
                                     aria-labelledby="radio-buttons-group"
-                                    name="controlled-radio-buttons-group"
+                                    name="gender"
                                     className={styles.inputBox}
                                     value={userInfo.gender}
                                     onChange={handleChange}
@@ -69,6 +71,7 @@ const Join = () => {
                                         labelId="select-age"
                                         id="select"
                                         value={userInfo.age}
+                                        name="age"
                                         label="Age"
                                         onChange={handleChange}
                                     >
@@ -88,6 +91,7 @@ const Join = () => {
                                     helperText=" "
                                     id="helper-text-aligned-no-helper"
                                     label="Phone"
+                                    name="phone"
                                     value={userInfo.phone}
                                     onChange={handleChange}
                                 />

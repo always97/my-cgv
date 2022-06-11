@@ -4,6 +4,9 @@ import styles from './movieChart.module.css';
 import MovieChartItem from './movieChartItem';
 
 const MovieChart = () => {
+
+    // const {chartMovies} = props;
+    
     return (
         <div className={styles.movieChartBox}>
             <div className={styles.contents}>
@@ -17,6 +20,11 @@ const MovieChart = () => {
                 </div>
                 <div className={styles.movieCharBox}>
                     <div className={styles.swipBox}>
+                        {/* {
+                            chartMovies.map((item) => (
+                                <MovieChartItem key={item.id} movie={item} />
+                            ));
+                        } */}
                         <MovieChartItem/>
                         <MovieChartItem/>
                     </div>

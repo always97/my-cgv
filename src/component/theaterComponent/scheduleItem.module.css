@@ -1,0 +1,25 @@
+.box {
+    position: relative;
+    width: 100px;
+    height: 70px;
+    margin-right: -1px;
+    padding-top: 15px;
+    border: 2px solid #cbcabe;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.time {
+    display: block;
+    font-family: verdana, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.seat {
+    color: #2275a4 !important;
+    font-weight: 500;
+    font-size: 13px;
+
+}

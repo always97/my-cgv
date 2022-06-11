@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
@@ -10,9 +11,20 @@ const Home = () => {
 
     const [playOn,setPlayOn] = useState(true);
     const [mute,setMute] = useState(true);
+    const [chartMovies,setChartMovies] = useState([]);
+
+    const getChartMovies = async() =>{
+        try {
+            const res = await (await axios.get("dsfsdf")).data;
+            setChartMovies(res.data);
+        } catch {
+            console.log("GET차트무비 api 에러");
+        }
+
+    }
 
     useEffect(()=> {
-    
+        // getChartMovies();
     }, [])
     
     return (
@@ -45,7 +57,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <MovieChart/>
+                <MovieChart chartMovies={chartMovies}/>
             </div>
         </div>
     );

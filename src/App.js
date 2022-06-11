@@ -8,6 +8,8 @@ import Login from './page/login/login';
 import Join from './page/join/join';
 import Mycgv from './page/mycgv/mycgv';
 import AllMovies from './page/allMovies/allMovies';
+import Theater from './page/theater/theater';
+import MovieDetail from './page/movieDetail/movieDetail';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path='/join' element={<Join/>} />
           <Route path='/mycgv' element={<Mycgv/>} />
           <Route path='/movies' element={<AllMovies/>} />
+          <Route path='/movies/detail/:id' element={<MovieDetail/>} />
+          <Route path='/theater' element={<Theater/>} />
         </Routes>
       </BrowserRouter>
     </>

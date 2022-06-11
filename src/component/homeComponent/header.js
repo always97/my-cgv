@@ -50,12 +50,12 @@ const Header = () => {
                     <ul className={styles.navMenu}>
                         <li>
                             <h2>
-                                <Link to="/" className={styles.link}>영화</Link>
+                                <Link to="/movies" className={styles.link}>영화</Link>
                             </h2>
                         </li>
                         <li>
                             <h2>
-                                <Link to="/" className={styles.link}>극장</Link>
+                                <Link to="/theater" className={styles.link}>극장</Link>
                             </h2>
                         </li>
                     </ul>

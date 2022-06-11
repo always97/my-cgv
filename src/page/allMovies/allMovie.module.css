@@ -35,8 +35,14 @@
 
 .sortBox {
     position: relative;
+    display: flex;
     margin-top: 20px;
-    text-align: right;
+    justify-content:space-between
+}
+
+.sortBox .serchBox .btn {
+    height: 55px;
+    margin-left: 10px;
 }
 
 .sortBox select {
@@ -58,4 +64,5 @@
 .movieListBox {
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
 }

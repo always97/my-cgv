@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './userInfo.module.css';
 import { BsPlusSquare } from 'react-icons/bs';
+import ReserveHistoryItem from './reserveHistoryItem';
 
 const UserInfo = () => {
+
+    const [test,setTest] = useState(true);
+
     return (
         <div className={styles.container}>
             <div className={styles.infoBox}>
@@ -33,7 +37,17 @@ const UserInfo = () => {
                     </p>
                 </div>
                 <div className={styles.reservedListBox}>
-                    고객님의 최근 예매 내역이 없습니다.
+                    {
+                        test && 
+                        <>
+                            <ReserveHistoryItem/>
+                            <ReserveHistoryItem/>
+                        </>
+                    }
+                    {
+                        (!test) &&
+                            <span>고객님의 최근 예매내역이 없습니다.</span>
+                    }
                 </div>
             </div>
         </div>
