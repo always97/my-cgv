@@ -1,15 +1,26 @@
+
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from './timeItem.module.css';
 
-const TimeItem = () => {
+const TimeItem = (props) => {
+
+    const {time, settingScheduleId , selectScheduleId, screenScheduleId, setOnSeatBtn} = props;
+
+    const times = time.startTime.split(' ');
+
     return (
-        <div className={styles.timeBox}>
+        <div className={`${styles.timeBox} ${selectScheduleId === screenScheduleId ? styles.seleted : null} `}
+            onClick={()=> {
+                settingScheduleId(screenScheduleId);
+                setOnSeatBtn(true);
+            }}
+            // onClick={()=> console.log("선택된 스크린스케줄아이디 : ", screenScheduleId)}
+        >
             <span className={styles.time}>
-                <span>"24:10"</span>
+                <span>{times[1]}</span>
                 {/* <span>{time}</span> */}
             </span>
-            <span className={styles.count}>"152석"</span>
+            <span className={styles.count}>잔여: {time.remainSeat}</span>
         </div>
     
     );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './userInfo.module.css';
 import { BsPlusSquare } from 'react-icons/bs';

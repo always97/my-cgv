@@ -32,7 +32,7 @@ const Login = () => {
             memberId:userId,
             memberPw:userPassword
         }
-        await axios.post("http://localhost:8080/user/login", data).then((res) => {
+        await axios.post("http://localhost:8050/user/login", data).then((res) => {
             console.log(res.data);
 
             sessionStorage.setItem("memberId", res.data.data.id);
@@ -40,7 +40,8 @@ const Login = () => {
             
             if (res.data.data.authority==="USER") 
             {
-                navigate("/");
+                // navigate("/");
+                navigate(-1); // 예매에서 이전페이지로 이동하기 위해서 -1로 수정!
             } else {
                 navigate("/admin")
             }

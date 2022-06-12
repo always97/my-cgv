@@ -22,7 +22,7 @@ function ScreenSchedule(props) {
         }
         
         
-        await axios.put("http://localhost:8080/salePolicy/apply",data).then((res) => {
+        await axios.put("http://localhost:8050/salePolicy/apply",data).then((res) => {
             console.log(res.data);
 
             const findIndex = screenScheduleList.findIndex(element => element.screenScheduleId === screenSchedule.screenScheduleId);

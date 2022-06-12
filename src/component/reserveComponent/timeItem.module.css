@@ -5,9 +5,21 @@
     line-height: 25px;
     padding-bottom: 9px;
     cursor: pointer;
+    width: 120px;
 }
+
+.timeBox:hover {
+    box-sizing: border-box;
+    border: 3px solid #f11313;
+}
+
 .time span {
     border: 1px solid #5c5c5c;
     margin: 1px;
     line-height: 19px;
+}
+
+.seleted {
+    background-color: black;
+    color: white;
 }

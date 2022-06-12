@@ -10,7 +10,7 @@ const DayItem = () => {
         <div className={styles.box}>
             <div className={styles.day}>
                 <span>06월</span>
-                <strong>11</strong>
+                <strong>14</strong>
             </div>
         </div>
     );

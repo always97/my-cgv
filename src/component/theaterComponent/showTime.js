@@ -6,7 +6,7 @@ const ShowTime = (props) => {
 
     const {item} = props;
 
-    
+    console.log("쇼타임에 item정체",item);
 
     return (
         <div className={styles.box}>
@@ -19,7 +19,7 @@ const ShowTime = (props) => {
                     </ul>
                 </div>
                 <div className={styles.timeTable}>
-                    {item.map((item)=> <ScheduleItem key={item.id} seat={item.remainSeat} time={item.startTime} />)}
+                    {item.map((item)=> <ScheduleItem key={item.id} scheduleId={item.screenScheduleId} salePolicyName={item.salePolicyName} seat={item.remainSeat} time={item.startTime} />)}
                     
                 </div>
             </div>

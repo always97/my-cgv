@@ -32,7 +32,7 @@ const Join = () => {
 
     const register = async () => {
         console.log(userInfo);
-        await axios.post("http://localhost:8080/user/registration", userInfo).then((res) => {
+        await axios.post("http://localhost:8050/user/registration", userInfo).then((res) => {
             alert("정상적으로 가입되었습니다. 로그인해주세요")
             
             navigate("/login")

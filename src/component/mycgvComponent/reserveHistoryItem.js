@@ -9,12 +9,14 @@ const ReserveHistoryItem = (props) => {
     const { ticket } = props;
     const [modalOpen, setModalOpen] = useState(false);
 
+    const [isRated, setIsRated] = useState(ticket.ratingId===null?false:true);
+
 
     return (
         <div className={styles.container}>
             <div className={styles.box}>
                 <div className={styles.imgBox}>
-                    <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85829/85829_320.jpg" alt="브로커 포스터"/>
+                    <img src={ticket.movieImgAddress} alt="브로커 포스터"/>
                 </div>
                 <div className={styles.infoBox}>
                     <ul className={styles.list}>
@@ -22,14 +24,27 @@ const ReserveHistoryItem = (props) => {
                         <li>관람일시 :   {ticket.registerDatetime}</li>
                         <li>관람극장 :   {ticket.theaterName}</li>
                         <li>관람인원 :   {ticket.seatCount}</li>
-                        <li>결제금액 :   {ticket.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</li>
+                        <li>결제금액 :   {ticket.price} 원</li>
                     </ul>
                 </div>
             </div>
-            <div className={styles.btnBox}>
-                <Button onClick={()=> setModalOpen(true)}>감상평남기기</Button>
-                <Button>예매취소</Button>
-            </div>
+
+            {
+                isRated ?
+                
+                null
+
+                :
+                
+                <div className={styles.btnBox}>
+                    <Button onClick={()=> setModalOpen(true)}>감상평남기기</Button>
+                    {/* <Button>예매취소</Button> */}
+                </div>
+
+                
+            }
+            
+            
             <Modal
                 isOpen={modalOpen}
                 ariaHideApp={false}
@@ -62,8 +77,8 @@ const ReserveHistoryItem = (props) => {
                 },
                 }}
             >
-                <InputReview  setModalOpen={setModalOpen}/>
-                <Button onClick={() => setModalOpen(false)}>닫기</Button>
+                <InputReview ticketId={ticket.ticketId} setIsRated={setIsRated} setModalOpen={setModalOpen}/>
+                
             </Modal>
 
         </div>

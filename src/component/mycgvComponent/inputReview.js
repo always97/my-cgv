@@ -8,7 +8,7 @@ import styles from './inputReview.module.css';
 
 const InputReview = (props) => {
 
-    const {setModalOpen} = props;
+    const {setModalOpen, ticketId, setIsRated} = props;
 
     const ARRAY = [0, 1, 2, 3, 4];
     
@@ -24,13 +24,21 @@ const InputReview = (props) => {
     };
 
     const handleRegister = () => {
+      
+      let ratePoint = point.filter(Boolean).length;
+
       const commentInfo = {
-        ticketingId:1 ,
-        ratingPoint:1 ,
+        ticketingId:ticketId ,
+        ratingPoint:ratePoint ,
         contents
       }
-      axios.post("http://localhost:8050/rating/create", commentInfo,);
+
+      axios.post("http://localhost:8050/rating/create", commentInfo,).then((res) => {
+        alert("정상적으로 등록되었습니다.");
+      });
       setModalOpen(false);
+
+      setIsRated(true);
     }
 
     return (
@@ -61,9 +69,11 @@ const InputReview = (props) => {
                 maxRows={15}
               />
               <Button className={styles.btn} onClick={()=>handleRegister()}>등록하기</Button>
+              <Button onClick={() => setModalOpen(false)}>닫기</Button>
         </Wrap>
     );
 };
+
 
 export default InputReview;
 

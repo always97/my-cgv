@@ -13,7 +13,7 @@ function Admin() {
     const [screenScheduleList, setScreenScheduleList] = useState([]);
 
     const getAdminData = async () => {
-        await axios.get("http://localhost:8080/salePolicy").then((res) => {
+        await axios.get("http://localhost:8050/salePolicy").then((res) => {
             console.log(res.data);
 
             setSalePolicyList(res.data.data.readSalePolicyDTOList);

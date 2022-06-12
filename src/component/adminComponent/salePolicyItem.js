@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './salePolicyItem.module.css'
 
 import InputAdornment from '@mui/material/InputAdornment';
@@ -24,7 +24,7 @@ function SalePolicyItem(props) {
             value: flatValue
         }
 
-        await axios.put("http://localhost:8080/salePolicy/flat/update", data).then((res) => {
+        await axios.put("http://localhost:8050/salePolicy/flat/update", data).then((res) => {
             console.log(res.data);
             alert(res.data.message);
         }).catch((error) => {
@@ -43,7 +43,7 @@ function SalePolicyItem(props) {
             value: flatRateValue
         }
 
-        await axios.put("http://localhost:8080/salePolicy/flatRate/update", data).then((res) => {
+        await axios.put("http://localhost:8050/salePolicy/flatRate/update", data).then((res) => {
             console.log(res.data);
             alert(res.data.message);
         }).catch((error) => {

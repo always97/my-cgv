@@ -17,4 +17,5 @@
 
 .titmeTableBox{
     display: flex;
+    flex-wrap: wrap;
 }

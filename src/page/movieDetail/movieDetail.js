@@ -5,17 +5,48 @@ import { useParams } from 'react-router-dom';
 import Header from '../../component/homeComponent/header';
 import Comment from '../../component/movieDetailComponent/comment';
 import styles from './movieDetail.module.css';
+import GenderChart from '../../component/movieDetailComponent/genderDistributionChart'
+import AgeChart from '../../component/movieDetailComponent/ageDistributionChart'
 
 const MovieDetail = () => {
 
     const { id } = useParams();
     const [movie,setMovie] = useState('');
 
+    const [genderChartDatas, setGenderChatDatas] = useState([]);
+    const [genderChartLabels, setGenderChatLabels] = useState([]);
+
+    const [ageChartDatas, setAgeChartDatas] = useState([]);
+    const [ageChartLabels, setAgeChatLabels] = useState([]);
+
+    const [ratingList, setRatingList] = useState([]);
+
     const getMovie = async () => {
         const res = await (await axios.get(`http://localhost:8050/movie/detail/${id}`)).data;
 
+        console.log(res.data);
+
         setMovie(res.data);
+
+        setGenderChatLabels(res.data.genderDistributionChartProcess.labels);
+        setGenderChatDatas(res.data.genderDistributionChartProcess.datas);
+
+        setAgeChatLabels(res.data.ageDistributionChartProcess.labels);
+        setAgeChartDatas(res.data.ageDistributionChartProcess.datas);
+
+        setRatingList(res.data.readRatingDTOList);
     }
+
+    const handleDeleteRating = async (ratingId) => {
+        await axios.delete(`http://localhost:8050/rating/delete/${ratingId}`).then((res) => {
+            alert("삭제되었습니다.");
+
+            const newRatingList = ratingList.filter((item)=> item.id !== ratingId);
+
+            setRatingList(newRatingList);
+        })
+    }
+
 
     useEffect(()=> {
         getMovie();
@@ -29,7 +60,7 @@ const MovieDetail = () => {
                     <div className={styles.movieDetailBox}>
                         <div className={styles.movieHeader}>
                             <div className={styles.imgBox}>
-                                <img src={movie.image} alt="브로커 포스터"/>
+                                <img src={movie.image} alt="포스터"/>
                                 
                             </div>
                             <div className={styles.contentsBox}>
@@ -71,11 +102,15 @@ const MovieDetail = () => {
                                 <ul className={styles.graph}>
                                     <li>
                                         <strong>성별 예매 분포</strong>
-                                        <div className={styles.chart}></div>
+                                        <div className={styles.chart}>
+                                            <GenderChart genderChartLabels={genderChartLabels} genderChartDatas={genderChartDatas}  />
+                                        </div>
                                     </li>
                                     <li>
                                         <strong>연령별 예매 분포</strong>
-                                        <div className={styles.chart}></div>
+                                        <div className={styles.chart}>
+                                            <AgeChart ageChartLabels={ageChartLabels} ageChartDatas={ageChartDatas} />
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -83,8 +118,8 @@ const MovieDetail = () => {
                         <div className={styles.commentBox}>
                             <ul className={styles.commentList}>
                                 { 
-                                    movie.readRatingDTOList &&
-                                        movie.readRatingDTOList.map((item) => <Comment key={item.id} info={item}/>)  
+                                    ratingList &&
+                                        ratingList.map((item) => <Comment key={item.id} info={item} handleDeleteRating={handleDeleteRating}/>)  
                                 }
                                 
                             </ul>
