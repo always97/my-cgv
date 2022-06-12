@@ -12,7 +12,7 @@ const TimeTable = (props) => {
 
     const readTheater = [oneFloor,twoFloor];
 
-    console.log("1관모엿니",oneFloor);
+    
 
     return (
         <div className={styles.cotainer}>

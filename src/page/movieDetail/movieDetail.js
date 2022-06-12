@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../../component/homeComponent/header';
 import Comment from '../../component/movieDetailComponent/comment';
 import styles from './movieDetail.module.css';
@@ -12,6 +12,8 @@ const MovieDetail = () => {
 
     const { id } = useParams();
     const [movie,setMovie] = useState('');
+
+    const navigate = useNavigate();
 
     const [genderChartDatas, setGenderChatDatas] = useState([]);
     const [genderChartLabels, setGenderChatLabels] = useState([]);
@@ -90,7 +92,7 @@ const MovieDetail = () => {
                                     </ul>
                                 </div>
                                 <div className={styles.like}>
-                                    <Button>예매하기</Button>
+                                    <Button onClick={()=> navigate('/reserve')}>예매하기</Button>
                                 </div>
                             </div>
                         </div>

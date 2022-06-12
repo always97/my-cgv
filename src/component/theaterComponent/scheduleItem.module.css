@@ -8,10 +8,9 @@
     border-radius: 15px;
     line-height: 1.4;
     text-align: center;
-    cursor: pointer;
 }
 
-.box:hover {
+.on:hover {
     font-weight: bold;
     border: 3px solid #f33d98;
 }
@@ -35,4 +34,13 @@
     position: absolute;
     top: 0px;
     left: 2px;
+  }
+
+  .closed {
+    opacity: 0.4;
+    background-color: rgb(177, 174, 174);
+  }
+
+  .on {
+      cursor: pointer;
   }

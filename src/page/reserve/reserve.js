@@ -15,11 +15,12 @@ const Reserve = () => {
 
     const navigete = useNavigate();
 
-    const {beforeScheduleId} = useLocation().state;
+    //const {beforeScheduleId} = useLocation().state;
+    const {state} = useLocation();
     
 
     const [selectMovie,setSelectMovie] = useState('범죄도시2');
-    const [selectScheduleId,setSelectScheduleId] = useState(beforeScheduleId ? beforeScheduleId : '');
+    const [selectScheduleId,setSelectScheduleId] = useState(state ? state.beforeScheduleId : '');
 
     const [onSeatBtn,setOnSeatBtn] = useState(selectScheduleId ? true : false);
     const [seatSelect,setSeatSelect] = useState(false);

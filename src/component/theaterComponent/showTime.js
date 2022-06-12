@@ -19,7 +19,7 @@ const ShowTime = (props) => {
                     </ul>
                 </div>
                 <div className={styles.timeTable}>
-                    {item.map((item)=> <ScheduleItem key={item.id} scheduleId={item.screenScheduleId} salePolicyName={item.salePolicyName} seat={item.remainSeat} time={item.startTime} />)}
+                    {item.map((item)=> <ScheduleItem key={item.id} isClosed={item.isClosed} scheduleId={item.screenScheduleId} salePolicyName={item.salePolicyName} seat={item.remainSeat} time={item.startTime} />)}
                     
                 </div>
             </div>

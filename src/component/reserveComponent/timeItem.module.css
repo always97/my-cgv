@@ -4,11 +4,10 @@
     height: 25px;
     line-height: 25px;
     padding-bottom: 9px;
-    cursor: pointer;
     width: 120px;
 }
 
-.timeBox:hover {
+.on:hover {
     box-sizing: border-box;
     border: 3px solid #f11313;
 }
@@ -22,4 +21,13 @@
 .seleted {
     background-color: black;
     color: white;
+}
+
+.closed{
+    opacity: 0.4;
+    background-color: rgb(133, 130, 130);
+}
+
+.on {
+    cursor: pointer;
 }

@@ -18,7 +18,7 @@ const TheaterInfos = (props) => {
                 info &&
                     info.map((time) => <TimeItem time={time} screenScheduleId={time.screenScheduleId} 
                     selectScheduleId={selectScheduleId} settingScheduleId={settingScheduleId}
-                    setOnSeatBtn={setOnSeatBtn}
+                    setOnSeatBtn={setOnSeatBtn} isClosed={time.isClosed}
                     />)
             }
             
