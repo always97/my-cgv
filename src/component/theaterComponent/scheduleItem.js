@@ -1,22 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './scheduleItem.module.css';
 
 
-const ScheduleItem = () => {
+const ScheduleItem = (props) => {
     
-    // const {time,restSeats} = props;
+    const {time,seat} = props;
     
+    const times = time.split(' ');
+
     return (
-        <div className={styles.box}>
-            <div>
-                {/* <span>{time}</span> */}
-                <span className={styles.time}>"시간 10:00"</span>
+        <Link to="/reserve">
+            <div className={styles.box}>
+                <div>
+                    {/* <span>{time}</span> */}
+                    <span className={styles.time}>{times[1]}</span>
+                </div>
+                <div>
+                    {/* <span>{restSeats}석</span> */}
+                    <span className={styles.seat}>{seat}석</span>
+                </div>
             </div>
-            <div>
-                {/* <span>{restSeats}석</span> */}
-                <span className={styles.seat}>"120석"</span>
-            </div>
-        </div>
+        </Link>
     );
 };
 

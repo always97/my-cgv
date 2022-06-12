@@ -13,19 +13,27 @@ const Home = () => {
     const [mute,setMute] = useState(true);
     const [chartMovies,setChartMovies] = useState([]);
 
-    const getChartMovies = async() =>{
-        try {
-            const res = await (await axios.get("dsfsdf")).data;
-            setChartMovies(res.data);
-        } catch {
-            console.log("GET차트무비 api 에러");
-        }
+    const [pageNum,setPageNum] = useState(0);
 
+    const getChartMovies = async ()=> {
+        const res = await (await axios.get(`http://localhost:8050/main?currentPageNo=${0}&recordPerPage=5`)).data;
+
+        setChartMovies(res.data);
     }
 
+    const getPageMovies = async (PageNo)=> {
+        const res = await (await axios.get(`http://localhost:8050/main?currentPageNo=${PageNo}&recordPerPage=5`)).data;
+
+        setChartMovies(res.data);
+    }
+
+
+
+    
+
     useEffect(()=> {
-        // getChartMovies();
-    }, [])
+        getChartMovies();
+    },[])
     
     return (
         <div>
@@ -57,7 +65,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <MovieChart chartMovies={chartMovies}/>
+                <MovieChart chartMovies={chartMovies} pageNum={pageNum} setPageNum={setPageNum} getPageMovies={getPageMovies}/>
             </div>
         </div>
     );

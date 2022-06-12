@@ -1,22 +1,60 @@
 import React, { useState } from 'react';
 import styles from './login.module.css';
 import { TextField } from '@mui/material';
+import axios from 'axios';
 
 import { Button } from 'react-bootstrap';
 import Header from '../../component/homeComponent/header';
+import { useNavigate } from 'react-router-dom';
+
+export function isLogin() {
+    if (sessionStorage.getItem("memberId")) return true;
+    else return false;
+}
 
 const Login = () => {
+    const navigate = useNavigate();
 
     const [userId, setUserId] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
     const handleInputId = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setUserId(e.target.value);
     }
     const handleInputPassword = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setUserPassword(e.target.value);
+    }
+
+    const login = async () => {
+        const data = {
+            memberId:userId,
+            memberPw:userPassword
+        }
+        await axios.post("http://localhost:8080/user/login", data).then((res) => {
+            console.log(res.data);
+
+            sessionStorage.setItem("memberId", res.data.data.id);
+            sessionStorage.setItem("memberName", res.data.data.name);
+            
+            if (res.data.data.authority==="USER") 
+            {
+                navigate("/");
+            } else {
+                navigate("/admin")
+            }
+
+        }).catch((error) => {
+            console.log(error)
+            alert(error.response.data.message);
+
+            setUserId("");
+            setUserPassword("");
+
+            document.querySelector("#id").value = "";
+            document.querySelector("#pw").value = "";
+        })
     }
 
     return (
@@ -32,7 +70,7 @@ const Login = () => {
                                     value={userId}
                                     onChange={handleInputId}
                                     helperText="Please enter your id"
-                                    id="demo-helper-text-misaligned"
+                                    id="id"
                                     label="id"
                                 />
                                 <TextField
@@ -40,12 +78,12 @@ const Login = () => {
                                     value={userPassword}
                                     onChange={handleInputPassword}
                                     helperText="Please enter your password"
-                                    id="demo-helper-text-misaligned"
+                                    id="pw"
                                     type="password"
                                     label="password"
                                 />
                             </div>
-                            <Button>로그인</Button>
+                            <Button onClick={() => {login()}}>로그인</Button>
                         </div>
                     </div>
                 </div>

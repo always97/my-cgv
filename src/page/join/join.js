@@ -3,12 +3,16 @@ import styles from './join.module.css';
 import { FormControlLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@mui/material';
 import Header from '../../component/homeComponent/header';
 import { Button } from 'react-bootstrap';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Join = () => {
+    const navigate = useNavigate();
 
     const [userInfo,setUserInfo] = useState({
-        id: '',
-        password : '',
+        memberId: '',
+        memberPw : '',
+        name: '',
         gender : '',
         age : '',
         phone: ''
@@ -17,7 +21,7 @@ const Join = () => {
 
     const handleChange = (e) => {
         e.preventDefault();
-        console.log("e.타겟:", e.target);
+        // console.log("e.타겟:", e.target);
     
         const { value, name } = e.target;
         setUserInfo({
@@ -25,6 +29,15 @@ const Join = () => {
             [name]: value,
         });
     };
+
+    const register = async () => {
+        console.log(userInfo);
+        await axios.post("http://localhost:8080/user/registration", userInfo).then((res) => {
+            alert("정상적으로 가입되었습니다. 로그인해주세요")
+            
+            navigate("/login")
+        })
+    }
 
     return (
         <>
@@ -36,7 +49,7 @@ const Join = () => {
                             <div className={styles.loginInput}>
                                 <TextField
                                     className={styles.inputBox}
-                                    name="id"
+                                    name="memberId"
                                     value={userInfo.id}
                                     onChange={handleChange}
                                     helperText="Please enter your id"
@@ -45,7 +58,7 @@ const Join = () => {
                                 />
                                 <TextField
                                     className={styles.inputBox}
-                                    name="password"
+                                    name="memberPw"
                                     value={userInfo.password}
                                     onChange={handleChange}
                                     helperText="Please enter your password"
@@ -53,7 +66,14 @@ const Join = () => {
                                     type="password"
                                     label="password"
                                 />
-                                
+                                <TextField
+                                    className={styles.inputBox}
+                                    name="name"
+                                    value={userInfo.name}
+                                    onChange={handleChange}
+                                    id="helper-text-misaligned"
+                                    label="name"
+                                />
                                 <RadioGroup
                                     aria-labelledby="radio-buttons-group"
                                     name="gender"
@@ -75,6 +95,7 @@ const Join = () => {
                                         label="Age"
                                         onChange={handleChange}
                                     >
+                                        
                                         <MenuItem value={10}>10대</MenuItem>
                                         <MenuItem value={20}>20대</MenuItem>
                                         <MenuItem value={30}>30대</MenuItem>
@@ -96,7 +117,7 @@ const Join = () => {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <Button>가입하기</Button>
+                            <Button onClick={() => { register(); }}>가입하기</Button>
                         </div>
                     </div>
                 </div>

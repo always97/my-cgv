@@ -1,23 +1,29 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../component/homeComponent/header';
 import UserInfo from '../../component/mycgvComponent/userInfo';
 import styles from './mycgv.module.css';
 
 const Mycgv = () => {
 
-    const [ticketList,setTicketList] = useEffect([]);
+    const [memberInfo, setMemberInfo] = useState("");
+    const [ticketList, setTicketList] = useState([]);
 
-    // const memberId
+    const [ticketingCount, setTicketingCount] = useState("");
 
     const getTicketList = async () => {
-        // const res = await (await axios.get(`sdf/id=${id}`)).data;
+        const memberId = sessionStorage.getItem("memberId");
 
-        // setTicketList(res.data);
+        const res = await (await axios.get(`http://localhost:8050/user/${memberId}`)).data;
+
+        console.log(res.data);
+        setMemberInfo(res.data.memberInfoDTO);
+        setTicketList(res.data.memberTicketingInfoDTOList);
+        setTicketingCount(res.data.ticketingCount);
     }
 
     useEffect(()=> {
-        // getTicketList();
+        getTicketList();
     },[])
 
     return (
@@ -25,7 +31,7 @@ const Mycgv = () => {
             <Header/>
             <div className={styles.container}>
                 <div className={styles.contents}>
-                    <UserInfo/>
+                    <UserInfo memberInfo={memberInfo} ticketList={ticketList} ticketingCount={ticketingCount}/>
                 </div> 
             </div>
         </>

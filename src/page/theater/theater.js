@@ -1,10 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import Header from '../../component/homeComponent/header';
 import DayItem from '../../component/theaterComponent/dayItem';
 import TimeTable from '../../component/theaterComponent/timeTable';
 import styles from './theater.module.css';
 
 const Theater = () => {
+
+    const [theaterInfo,setTheaterInfo] = useState('');
+
+    const getTheaterInfo = async()=> {
+        const res = await (await axios.get('http://localhost:8050/screenSchedule')).data;
+
+
+        setTheaterInfo(res.data[0]);
+    }
+
+    useEffect(()=> {
+        getTheaterInfo();
+    },[])
+
     return (
         <>
             <Header/>
@@ -15,23 +30,16 @@ const Theater = () => {
                             <div className={styles.slider}>
                                 <ul>
                                     <DayItem/>
-                                    <DayItem/>
-                                    <DayItem/>
-                                    <DayItem/>
-                                    <DayItem/>
-                                    <DayItem/>
-                                    <DayItem/>
-                                    <DayItem/>
-                                    
                                 </ul>
                             </div>
                         </div>
                         <div className={styles.timeTableBox}>
                             <ul>
                                 {/* {schedule.map((item)=> <TimeTable key={item.id} item={item}/>)} */}
-                                <TimeTable/>
-                                <TimeTable/>
-                                <TimeTable/>
+                                {theaterInfo && 
+                                    <TimeTable theaterInfo={theaterInfo}/>
+                                } 
+
                             </ul>
 
                         </div>

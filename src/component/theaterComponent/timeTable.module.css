@@ -9,3 +9,7 @@
     font-size: 20px;
     font-weight: 700;
 }
+
+.infoMovie span {
+    padding: 0 5px;
+}

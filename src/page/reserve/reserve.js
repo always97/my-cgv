@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 
 const Reserve = () => {
 
+    const [selectMovie,setSelectMovie] = useState('브로커');
     const [onSeatBtn,setOnSeatBtn] = useState(false);
     const [seatSelect,setSeatSelect] = useState(false);
     const [peopleCount,setPeopleCount] = useState(1);
@@ -63,9 +64,14 @@ const Reserve = () => {
                                         <div className={styles.body}>
                                             <div className={styles.movieSelect}>
                                                 <div className={styles.movieList}>
-                                                    <ul>
-                                        {/* movies.map((item)=> <li key={item.id} className={styles.movieItem}>{item.title}</li>) */}
-                                                        <li>브로커</li>
+                                                    <ul className={styles.movieListBox}>
+                                        {/* movies.map((item)=> <li key={item.id} 
+                                                                    className={setSelectMovie === item.title ? styles.selected : styles.movieItem}
+                                                                    onClick={()=> setSelectMovie(item.title)}
+                                                                >
+                                                                    {item.title}
+                                                                </li>) */}
+                                                        <li className={styles.movieItem}>브로커</li>
                                                     </ul>
                                                 </div>
                                             </div>

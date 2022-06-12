@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { isLogin } from '../../page/login/login';
 
 import styles from './header.module.css';
 
 const Header = () => {
+    const navigate = useNavigate();
+    const logout = () => {
+        sessionStorage.removeItem("memberId");
+        sessionStorage.removeItem("memberName");
 
+        alert("로그아웃했습니다.");
+
+        navigate("/");
+    }
+    console.log((sessionStorage.getItem("memberId")));
 
     return (
         <div className={styles.header}>
@@ -17,31 +27,38 @@ const Header = () => {
                         <span>CULTUREPLEX</span>
                     </h1>
                     <ul className={styles.memberInfo}>
-                        <li>
-                            {/* 로그인 및 회원가입 링크주소 to="/" 설정 */}
-                            <Link to="/login" className={styles.link}>
-                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그인"/>
-                                <span>로그인</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/login" className={styles.link}>
-                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그아웃"/>
-                                <span>로그아웃</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/join" className={styles.link}>
-                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png" alt="회원가입"/>
-                                <span>회원가입</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/mycgv" className={styles.link}>
-                                <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="회원가입"/>
-                                <span>MY CGV</span>
-                            </Link>
-                        </li>
+                        {
+                            isLogin() ? 
+                                <>
+                                    <li onClick={() => {logout()}}>
+                                        <Link to="/login" className={styles.link}>
+                                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그아웃"/>
+                                            <span>로그아웃</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/mycgv" className={styles.link}>
+                                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginMember.png" alt="회원가입"/>
+                                            <span>MY CGV</span>
+                                        </Link>
+                                    </li>
+                                </>
+                            :
+                                <>
+                                    <li>
+                                        <Link to="/login" className={styles.link}>
+                                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginPassword.png" alt="로그인"/>
+                                            <span>로그인</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/join" className={styles.link}>
+                                            <img src="https://img.cgv.co.kr/R2014/images/common/ico/loginJoin.png" alt="회원가입"/>
+                                            <span>회원가입</span>
+                                        </Link>
+                                    </li>
+                                </>
+                        }
                     </ul>
                 </div>
             </div>

@@ -1,9 +1,26 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import Header from '../../component/homeComponent/header';
+import Comment from '../../component/movieDetailComponent/comment';
 import styles from './movieDetail.module.css';
 
 const MovieDetail = () => {
+
+    const { id } = useParams();
+    const [movie,setMovie] = useState('');
+
+    const getMovie = async () => {
+        const res = await (await axios.get(`http://localhost:8050/movie/detail/${id}`)).data;
+
+        setMovie(res.data);
+    }
+
+    useEffect(()=> {
+        getMovie();
+    },[])
+
     return (
         <>
             <Header/>
@@ -12,30 +29,32 @@ const MovieDetail = () => {
                     <div className={styles.movieDetailBox}>
                         <div className={styles.movieHeader}>
                             <div className={styles.imgBox}>
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85829/85829_320.jpg" alt="브로커 포스터"/>
-                                <span>12세 이상</span>
+                                <img src={movie.image} alt="브로커 포스터"/>
+                                
                             </div>
                             <div className={styles.contentsBox}>
                                 <div className={styles.title}>
-                                    <strong>"브로커"</strong>
+                                    <strong>{movie.title}</strong>
                                 </div>
                                 <div className={styles.score}>
                                     <strong className={styles.percent}>
-                                        예매율<span>"26.2"%</span>
+                                        예매율<span>{movie.ticketingRate}%</span>
                                     </strong>
                                 </div>
                                 <div className={styles.spec}>
                                     <ul>
                                         <li>
-                                            <span>감독 : "누구감독"</span>
-                                            <span>배우 : <span>"1번배우"</span></span>     
+                                            <span>배우 : 
+                                                {   movie.actorList &&
+                                                    movie.actorList.map((actor)=> <span className={styles.actorName}>{actor.name}</span>)}
+                                            </span>     
                                         </li>
                                         <li>
-                                            <span>장르 : "드라마"</span>
-                                            <span>기본 : "12세 이상" , "129분", "한국"</span>
+                                            <span>장르 : {movie.genre}</span>
+                                            <span>기본 : {movie.ageLimit}세 이상 , {movie.runtime}분 </span>
                                         </li>
                                         <li>
-                                            <span>개봉 : "2022.06.08"</span>
+                                            <span>개봉 : {movie.openingTime}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -63,9 +82,11 @@ const MovieDetail = () => {
                         </div>   
                         <div className={styles.commentBox}>
                             <ul className={styles.commentList}>
-                                {/* comment컴포넌트생성 */}
-                                <li>댓글1</li>
-                                <li>댓글1</li>
+                                { 
+                                    movie.readRatingDTOList &&
+                                        movie.readRatingDTOList.map((item) => <Comment key={item.id} info={item}/>)  
+                                }
+                                
                             </ul>
                         </div>
                     </div>

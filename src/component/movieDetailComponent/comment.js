@@ -1,23 +1,27 @@
 import React from 'react';
 import styles from './comment.module.css';
+import { AiOutlineLike } from 'react-icons/ai';
 
-const Comment = () => {
+const Comment = (props) => {
 
-    const {name,contents,date,like}
+    const {info} = props;
 
     
 
     return (
         <div className={styles.itemBox}>
             <div>
-                name
+                아이디 : {info.memberId}
             </div>
             <div>
-                contents
+                내용 : {info.contents}
             </div>
             <div>
-                <span>"날짜"</span>
-                <span>"좋아요"</span>
+                평점 : {info.ratingPoint}
+            </div>
+            <div className={styles.bottom}>
+                <span>등록일 : {info.registerDatetime} </span>
+                <span className={styles.likeBtn}><AiOutlineLike/> <span>{info.likesNumber}</span></span>
             </div>
         </div>
     );

@@ -4,8 +4,9 @@ import styles from './reserveHistoryItem.module.css';
 import Modal from "react-modal";
 import InputReview from './inputReview';
 
-const ReserveHistoryItem = () => {
+const ReserveHistoryItem = (props) => {
 
+    const { ticket } = props;
     const [modalOpen, setModalOpen] = useState(false);
 
 
@@ -17,16 +18,16 @@ const ReserveHistoryItem = () => {
                 </div>
                 <div className={styles.infoBox}>
                     <ul className={styles.list}>
-                        <li className={styles.title}>영화제목</li>
-                        <li>관람일시</li>
-                        <li>관람극장</li>
-                        <li>관람인원</li>
-                        <li>결제금액</li>
+                        <li className={styles.title}>영화제목 : {ticket.movieTitle}</li>
+                        <li>관람일시 :   {ticket.registerDatetime}</li>
+                        <li>관람극장 :   {ticket.theaterName}</li>
+                        <li>관람인원 :   {ticket.seatCount}</li>
+                        <li>결제금액 :   {ticket.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} 원</li>
                     </ul>
                 </div>
             </div>
             <div className={styles.btnBox}>
-                <Button>감상평남기기</Button>
+                <Button onClick={()=> setModalOpen(true)}>감상평남기기</Button>
                 <Button>예매취소</Button>
             </div>
             <Modal
@@ -55,12 +56,13 @@ const ReserveHistoryItem = () => {
                     borderRadius: "4px",
                     outline: "none",
                     padding: "20px",
-                    width: "800px",
-                    height: "800px",
+                    width: "600px",
+                    height: "600px",
+                
                 },
                 }}
             >
-                <InputReview/>
+                <InputReview  setModalOpen={setModalOpen}/>
                 <Button onClick={() => setModalOpen(false)}>닫기</Button>
             </Modal>
 

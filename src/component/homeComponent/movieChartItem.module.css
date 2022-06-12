@@ -1,6 +1,6 @@
 
 .itemBox {
-    width: 170.4px;
+    width: 156.4px;
     margin-right: 32px;
     flex-shrink: 0;
     height: 100%;
@@ -17,13 +17,21 @@
     cursor: pointer;
 }
 
+.itemBox .imgBox .imgOpacity {
+    opacity: 0.4;
+    
+}
+
 .itemBox .imgBox .vision{
     z-index: 1;
     position: absolute;
-    left: 10%;
-    top: 20%;
+    left: 20%;
+    top: 25%;
     display: block;
 }
+
+
+
 .itemBox .imgBox .vision .btn {
     margin : 10px
 }
@@ -58,6 +66,7 @@
 .itemgBox .movieInfo {
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 .movieInfo .movieName {
@@ -76,9 +85,9 @@
 
 .movieInfo span {
     display: block;
-    float: left;
     margin-top: 9px;
     font-size: 14px;
+    text-align: center;
     color: #444;
     line-height: 1.214em;
 }
