@@ -82,6 +82,9 @@ const Reserve = () => {
         if(selectedSeatList.length>=peopleCount) {
             return alert("최대인원이 선택되었습니다.")
         }
+        if(selectedSeatList.includes(seatId)) {
+            return alert("이미선택된 좌석입니다.")
+        }
         
         setSelectedSeatList([...selectedSeatList, seatId]);
     }
