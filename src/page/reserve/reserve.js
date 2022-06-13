@@ -8,6 +8,7 @@ import axios from 'axios';
 import TheaterInfos from '../../component/reserveComponent/theaterInfos';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SeatItem from '../../component/reserveComponent/seatItem';
+import { isLogin } from '../login/login';
 
 
 
@@ -48,14 +49,19 @@ const Reserve = () => {
     }
 
     const handleSeatBtnClick = () => {
-
-        getRemainSeat(selectScheduleId);
-        setSeatSelect(true);
+        if(isLogin()) {
+            getRemainSeat(selectScheduleId);
+            setSeatSelect(true);
+        }else {
+            alert("로그인 후 이용 가능합니다.");
+            navigete('/login')
+        }
     }
 
     const getRemainSeat = async(id)=> {
         const res = await (await axios.get(`http://localhost:8050//ticketing/remainSeat/${id}`)).data;
         setRemainInfo(res.data)
+        setAllPrice(res.data.price)
 
         setSeatA(res.data.seatColDTOS[0].readSeatDTOList);
         console.log("좌석표시좀",res.data.seatColDTOS[0].readSeatDTOList);
@@ -85,7 +91,6 @@ const Reserve = () => {
         if(selectedSeatList.includes(seatId)) {
             return alert("이미선택된 좌석입니다.")
         }
-        
         setSelectedSeatList([...selectedSeatList, seatId]);
     }
 

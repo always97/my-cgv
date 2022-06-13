@@ -46,7 +46,7 @@ const UserInfo = (props) => {
                             ))
                     }
                     {
-                        (!ticketList) &&
+                        (ticketList.length<1) &&
                             <span>고객님의 최근 예매내역이 없습니다.</span>
                     }
                 </div>
