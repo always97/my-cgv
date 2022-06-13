@@ -58,6 +58,7 @@ const Reserve = () => {
         setRemainInfo(res.data)
 
         setSeatA(res.data.seatColDTOS[0].readSeatDTOList);
+        console.log("좌석표시좀",res.data.seatColDTOS[0].readSeatDTOList);
         setSeatB(res.data.seatColDTOS[1].readSeatDTOList);
     }
 

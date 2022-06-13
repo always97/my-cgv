@@ -98,7 +98,7 @@ const MovieDetail = () => {
                         </div>
                         <div className={styles.mainBox}>
                             <div className={styles.storyBox}>
-                                <p>"줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리줄거리"</p>
+                                <p>"줄거리 {movie.contents}"</p>
                             </div>
                             <div className={styles.graphBox}>
                                 <ul className={styles.graph}>

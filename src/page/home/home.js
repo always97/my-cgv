@@ -58,7 +58,7 @@ const Home = () => {
                                 또 다른 존재가 깨어난다!
                             </span>
                             <div className={styles.traillerControllerBox}>
-                                <Link to="/movies/detail/1" className={styles.detailViewLink}>상세보기</Link>
+                                <Link to="/movies/detail/4" className={styles.detailViewLink}>상세보기</Link>
                                 <button className={playOn ? styles.videoPlay : styles.videoStop} onClick={()=> setPlayOn(!playOn)}>Stop</button>
                                 <button className={mute ? styles.videoSoundOff : styles.videoSoundOn} onClick={()=> setMute(!mute)} >SoundOnOff</button>
                             </div>

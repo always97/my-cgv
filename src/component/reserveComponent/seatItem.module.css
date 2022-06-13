@@ -5,12 +5,14 @@
     margin-right: 5px;
     width: 100%;
     height: 70px;
+
 }
 
 .seatBox .disable {
     width: 100%;
     height: 100%;
     background-color: #656466;
+    padding: 5px;
     
 }
 .seatBox .active {
@@ -27,7 +29,7 @@
 }
 
 .seatBox span{
-    font-size: 20px !important;
+    font-size: 17px !important;
 }
 
 .choiced {
